@@ -10,11 +10,6 @@ use opencv::core::{
     bitwise_not
 };
 
-use opencv::imgcodecs::{
-    imwrite,
-    imread
-};
-
 fn compute_skew(input_image: &Mat) -> Result<f64> {
     let mut image = Mat::default();
     bitwise_not(input_image, &mut image, &Mat::default())?;
@@ -58,7 +53,7 @@ fn compute_skew(input_image: &Mat) -> Result<f64> {
         println!("Line: x1: {}, y1: {}, x2: {}, y2: {} | Angle: {}", line[0], line[1], line[2], line[3], atan_num);
     }
 
-    imwrite("lines.jpeg", &disp_line, &core::Vector::new())?;
+    //imwrite("lines.jpeg", &disp_line, &core::Vector::new())?;
 
     angle /= lines.len() as f64;
 
