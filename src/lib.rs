@@ -131,9 +131,10 @@ pub fn recognise_pages(pages: Vec<String>, language: String) -> Vec<SanatizedPag
     rust_friendly_pages
 }
 
-pub fn save_json(pages: &Vec<SanatizedPage>, path: &str) {
-    let path = Path::new(path);
+pub fn save_json(pages: &Vec<SanatizedPage>, path: &str, file: &str) {
+    let mut path = Path::new(path).join(file);
     let mut file_path = path.to_path_buf();
+
     if file_path.extension().is_none() {
         file_path.set_extension("json");
     }

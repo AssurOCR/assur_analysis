@@ -1,19 +1,14 @@
-use image::{DynamicImage, GrayImage, ImageFormat};
-use std::error::Error;
-use std::path::Path;
-use imageproc::contrast::otsu_level;
+use opencv::{
+    prelude::*,
+};
 
-pub fn clean_page(image: &DynamicImage) -> GrayImage {
-    let gimage = image.to_luma8();
+use opencv::photo::{
+    fast_nl_means_denoising
+};
 
-    println!("Calculating threshold!");
-    // Apply Otsu threshold to the image
-    let threshold = otsu_level(&gimage);
+pub fn clean_page(image: &Mat) -> Mat {
+    let mut denoised_image = Mat::default();
+    fast_nl_means_denoising(image, &mut denoised_image, 30.0, 7, 21).unwrap();
 
-
-    println!("Applying threshold");
-
-    imageproc::contrast::threshold(&gimage, threshold)
+    denoised_image
 }
-
-
