@@ -1,0 +1,1 @@
+clang++ -std=c++11 -O3 -o libsmalltess.dylib -dynamiclib -I/Users/rudrabhoj/Work/Dev/tesseract_export/include -I/opt/homebrew/opt/leptonica/include main.cpp -L/opt/homebrew/opt/tesseract/lib  -L/opt/homebrew/opt/leptonica/lib -ltesseract -llept

@@ -1,0 +1,23 @@
+[package]
+name = "assur_analysis"
+version = "0.1.0"
+edition = "2021"
+links = "libsmalltess"
+build="build.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+
+[dependencies]
+libc = "0.2.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+image = "0.24.5"
+imageproc = "0.23.0"
+edgy = "0.1.1"
+anyhow = "1.0.68"
+opencv = "0.70.0"
+
+
+[build-dependencies]
+cmake = "0.1.49"
